@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Techtonomy helps small and mid-size businesses implement AI before their competitors do. Practical. Fast. No fluff." />
+  <title>Techtonomy LLC — AI Strategy for the Real World</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0A0A0A;
+      --card: #111111;
+      --card-hover: #161616;
+      --accent: #00B4FF;
+      --accent-dim: rgba(0, 180, 255, 0.12);
+      --accent-glow: rgba(0, 180, 255, 0.25);
+      --text: #F0F0F0;
+      --text-muted: #888888;
+      --border: rgba(255, 255, 255, 0.07);
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #000 !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: opacity 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      opacity: 0.85;
+      color: #000 !important;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    h1, h2, h3 {
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 1rem;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 8rem;
+      padding-bottom: 6rem;
+      position: relative;
+      max-width: 100%;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .hero-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0, 180, 255, 0.3);
+      color: var(--accent);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 60%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-sub strong {
+      color: var(--text);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 0 0 var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--accent-glow);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      margin-left: 1rem;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 180, 255, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── PROBLEM ── */
+    #problem {
+      border-top: 1px solid var(--border);
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .problem-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .problem-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .problem-stat {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .problem-text {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .problem-text strong {
+      color: var(--text);
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      border-top: 1px solid var(--border);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s, background 0.3s, transform 0.3s;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s, background 0.3s;
+    }
+
+    .service-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .service-card:hover {
+      border-color: rgba(0, 180, 255, 0.4);
+      background: var(--card-hover);
+    }
+
+    .service-card.featured {
+      border-color: rgba(0, 180, 255, 0.3);
+      background: linear-gradient(135deg, #111111 0%, #0d1820 100%);
+    }
+
+    .service-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .service-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .service-price {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      line-height: 1;
+    }
+
+    .service-features {
+      list-style: none;
+      margin-bottom: 2rem;
+      flex: 1;
+    }
+
+    .service-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.5rem 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .service-features li:last-child {
+      border-bottom: none;
+    }
+
+    .service-features li::before {
+      content: '→';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.05em;
+    }
+
+    .btn-service {
+      display: block;
+      text-align: center;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0, 180, 255, 0.3);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-service:hover {
+      background: rgba(0, 180, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .btn-service.primary {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+
+    .btn-service.primary:hover {
+      background: #00c8ff;
+    }
+
+    /* ── WHY ── */
+    #why {
+      border-top: 1px solid var(--border);
+    }
+
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .why-quote {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      line-height: 1.8;
+      color: var(--text-muted);
+      border-left: 3px solid var(--accent);
+      padding-left: 1.5rem;
+      font-style: italic;
+    }
+
+    .why-quote strong {
+      color: var(--text);
+      font-style: normal;
+    }
+
+    .why-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .why-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .why-bullets li span.check {
+      font-size: 1.2rem;
+    }
+
+    .why-stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .why-stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .why-stat.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .why-stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .why-stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-left h2 {
+      margin-bottom: 1rem;
+    }
+
+    .contact-left p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: opacity 0.2s;
+    }
+
+    .contact-email:hover {
+      opacity: 0.7;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    input, select, textarea {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 0.95rem;
+      padding: 0.75rem 1rem;
+      transition: border-color 0.2s;
+      outline: none;
+      width: 100%;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+    }
+
+    select option {
+      background: #1a1a1a;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    .btn-submit {
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-family: var(--font);
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--accent-glow);
+    }
+
+    .success-msg {
+      display: none;
+      background: rgba(0, 180, 255, 0.1);
+      border: 1px solid rgba(0, 180, 255, 0.3);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer .footer-logo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    footer .footer-logo span {
+      color: var(--accent);
+    }
+
+    footer .footer-tagline {
+      font-style: italic;
+      margin-top: 0.25rem;
+      opacity: 0.6;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      section {
+        padding: 4rem 1.25rem;
+      }
+
+      .why-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .why-stat-row {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-secondary {
+        display: none;
+      }
+
+      .hero-glow {
+        display: none;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .service-price {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* staggered delays */
+    .service-card:nth-child(1) { transition-delay: 0s; }
+    .service-card:nth-child(2) { transition-delay: 0.15s; }
+    .service-card:nth-child(3) { transition-delay: 0.3s; }
+
+    .problem-card:nth-child(1) { transition-delay: 0s; }
+    .problem-card:nth-child(2) { transition-delay: 0.15s; }
+    .problem-card:nth-child(3) { transition-delay: 0.3s; }
+
+    .why-stat:nth-child(1) { transition-delay: 0s; }
+    .why-stat:nth-child(2) { transition-delay: 0.1s; }
+    .why-stat:nth-child(3) { transition-delay: 0.2s; }
+
+    /* Divider line accent */
+    .accent-line {
+      width: 48px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Tech<span>tonomy</span></div>
+    <ul class="nav-links">
+      <li><a href="#problem">The Problem</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#contact" class="nav-cta">Book Free Audit</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+      <div class="hero-badge">AI Strategy for the Real World</div>
+      <h1>Your Business Needs an AI Strategy. Most Don't Have One.</h1>
+      <p class="hero-sub">
+        Techtonomy helps <strong>small and mid-size businesses</strong> implement AI before their competitors do.
+        <strong>Practical. Fast. No fluff.</strong>
+      </p>
+      <div>
+        <a href="#contact" class="btn-primary">Book Your Free AI Audit</a>
+        <a href="#services" class="btn-secondary">See Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PROBLEM -->
+  <section id="problem">
+    <div class="section-label">The Problem</div>
+    <h2>The window is closing.</h2>
+    <div class="accent-line"></div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-stat">&lt;1%</div>
+        <div class="problem-text">
+          <strong>33 million businesses in America.</strong> Less than 1% have a real AI strategy. That gap is your opportunity — and your threat.
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-stat">10+ hrs</div>
+        <div class="problem-text">
+          You're losing <strong>10+ hours a week</strong> to tasks AI could handle today. Emails. Scheduling. Reporting. Lead follow-up. It's all automatable.
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-stat">Now.</div>
+        <div class="problem-text">
+          <strong>Your competitors are figuring this out.</strong> The businesses that move first will own their markets. The ones that wait will be playing catch-up forever.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-label">Services</div>
+    <h2>How we work together.</h2>
+    <div class="accent-line"></div>
+    <div class="services-grid">
+
+      <!-- Card 1 -->
+      <div class="service-card">
+        <div class="service-tag">Start Here</div>
+        <div class="service-name">AI Audit</div>
+        <div class="service-price">$750</div>
+        <ul class="service-features">
+          <li>1-hour deep dive into your business</li>
+          <li>Identify your 5 biggest AI opportunities</li>
+          <li>Ranked by ROI and ease of implementation</li>
+          <li>Delivered as a written report within 48 hours</li>
+        </ul>
+        <a href="#contact" class="btn-service primary">Start Here</a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="service-card featured">
+        <div class="service-tag">Most Popular</div>
+        <div class="service-name">AI Implementation</div>
+        <div class="service-price">$3,000–$7,000</div>
+        <ul class="service-features">
+          <li>We build it for you</li>
+          <li>Automate your top 2–3 workflows</li>
+          <li>Customer emails, scheduling, reporting, lead follow-up</li>
+          <li>2–4 week delivery</li>
+        </ul>
+        <a href="#contact" class="btn-service">Get a Quote</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="service-card">
+        <div class="service-tag">Ongoing</div>
+        <div class="service-name">AI Chief of Staff</div>
+        <div class="service-price">$2,000<span style="font-size:1rem;font-weight:600;">/mo</span></div>
+        <ul class="service-features">
+          <li>Your dedicated AI department</li>
+          <li>Monthly strategy + continuous improvements</li>
+          <li>First to know when new tools can help your business</li>
+          <li>Cancel anytime</li>
+        </ul>
+        <a href="#contact" class="btn-service">Let's Talk</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY TECHTONOMY -->
+  <section id="why">
+    <div class="section-label">Why Techtonomy</div>
+    <h2>I'm not a consultant who read a blog post.</h2>
+    <div class="accent-line"></div>
+    <div class="why-inner">
+      <blockquote class="why-quote">
+        "I work in <strong>humanoid robotics</strong>. I own <strong>11 Teslas</strong>. I've built AI systems that run <strong>24/7 without me</strong>. I'm not a consultant who read a blog post about AI — I'm someone who <strong>lives it every day.</strong>"
+        <br /><br />
+        <span style="font-style:normal; font-weight:700; color:var(--text); font-size:0.9rem;">— Rob, Founder · Techtonomy LLC · San Ramon, CA</span>
+      </blockquote>
+
+      <ul class="why-bullets">
+        <li><span class="check">✅</span> Bay Area tech insider</li>
+        <li><span class="check">✅</span> Hands-on builder, not a theorist</li>
+        <li><span class="check">✅</span> Results in weeks, not months</li>
+      </ul>
+    </div>
+
+    <div class="why-stat-row">
+      <div class="why-stat fade-up">
+        <div class="why-stat-num">11</div>
+        <div class="why-stat-label">Teslas owned &amp; operated</div>
+      </div>
+      <div class="why-stat fade-up">
+        <div class="why-stat-num">24/7</div>
+        <div class="why-stat-label">AI systems running without manual input</div>
+      </div>
+      <div class="why-stat fade-up">
+        <div class="why-stat-num">48h</div>
+        <div class="why-stat-label">Audit report turnaround</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="section-label">Free AI Audit</div>
+        <h2>Book Your Free AI Audit</h2>
+        <div class="accent-line"></div>
+        <p>
+          Tell us about your business. We'll get back to you within 24 hours to schedule a call.
+        </p>
+        <p>
+          No sales pitch. Just a real conversation about what AI can do for your business.
+        </p>
+        <a href="mailto:Techtonomyllc@gmail.com" class="contact-email">
+          ✉ Techtonomyllc@gmail.com
+        </a>
+      </div>
+
+      <div>
+        <form id="auditForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="business">Business Type</label>
+            <select id="business" name="business" required>
+              <option value="" disabled selected>Select your industry…</option>
+              <option>Retail / E-commerce</option>
+              <option>Professional Services</option>
+              <option>Healthcare / Wellness</option>
+              <option>Real Estate</option>
+              <option>Restaurant / Food</option>
+              <option>Construction / Trades</option>
+              <option>Marketing / Agency</option>
+              <option>Finance / Accounting</option>
+              <option>Legal</option>
+              <option>Technology / SaaS</option>
+              <option>Manufacturing</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="pain">Biggest Pain Point</label>
+            <textarea id="pain" name="pain" placeholder="What's eating up the most time in your business right now? (e.g., follow-up emails, scheduling, reporting…)" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Request My Free Audit →</button>
+          <p class="form-note">No sales pitch. Just a real conversation about what AI can do for your business.</p>
+        </form>
+        <div class="success-msg" id="successMsg">
+          ✅ Got it! We'll reach out within 24 hours to schedule your AI Audit. Check your inbox.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Tech<span>tonomy</span> LLC</div>
+    <div>San Ramon, CA</div>
+    <div class="footer-tagline">AI Strategy for the Real World</div>
+    <div style="margin-top:1rem;">© 2026 Techtonomy LLC. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // ── Intersection Observer for scroll animations ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.problem-card, .service-card, .why-stat, .fade-up').forEach(el => {
+      observer.observe(el);
+    });
+
+    // ── Form submit handler ──
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('auditForm');
+      const successMsg = document.getElementById('successMsg');
+
+      // Build mailto link as fallback
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const business = document.getElementById('business').value;
+      const pain = document.getElementById('pain').value;
+
+      const subject = encodeURIComponent('Free AI Audit Request — ' + name);
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        'Business Type: ' + business + '\n\n' +
+        'Biggest Pain Point:\n' + pain
+      );
+
+      window.location.href = 'mailto:Techtonomyllc@gmail.com?subject=' + subject + '&body=' + body;
+
+      form.style.display = 'none';
+      successMsg.style.display = 'block';
+    }
+
+    // ── Smooth nav active state ──
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+      });
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
