@@ -1,5 +1,5 @@
-FROM python:3.11-alpine
+FROM node:18-alpine
 WORKDIR /app
 COPY index.html .
-COPY serve.py .
-CMD ["python3", "serve.py"]
+COPY server.js .
+CMD ["node", "server.js"]
