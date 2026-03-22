@@ -973,25 +973,39 @@
       e.preventDefault();
       const form = document.getElementById('auditForm');
       const successMsg = document.getElementById('successMsg');
+      const btn = form.querySelector('.btn-submit');
 
-      // Build mailto link as fallback
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const business = document.getElementById('business').value;
-      const pain = document.getElementById('pain').value;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
 
-      const subject = encodeURIComponent('Free AI Audit Request — ' + name);
-      const body = encodeURIComponent(
-        'Name: ' + name + '\n' +
-        'Email: ' + email + '\n' +
-        'Business Type: ' + business + '\n\n' +
-        'Biggest Pain Point:\n' + pain
-      );
+      const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        business: document.getElementById('business').value,
+        pain: document.getElementById('pain').value,
+      };
 
-      window.location.href = 'mailto:Techtonomyllc@gmail.com?subject=' + subject + '&body=' + body;
-
-      form.style.display = 'none';
-      successMsg.style.display = 'block';
+      fetch('https://formspree.io/f/xvgodpbq', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(r => {
+        if (r.ok) {
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+        } else {
+          // Fallback to mailto if Formspree fails
+          const subject = encodeURIComponent('Free AI Audit Request — ' + data.name);
+          const body = encodeURIComponent('Name: ' + data.name + '\nEmail: ' + data.email + '\nBusiness: ' + data.business + '\n\nPain Point:\n' + data.pain);
+          window.location.href = 'mailto:Techtonomyllc@gmail.com?subject=' + subject + '&body=' + body;
+        }
+      })
+      .catch(() => {
+        const subject = encodeURIComponent('Free AI Audit Request — ' + data.name);
+        const body = encodeURIComponent('Name: ' + data.name + '\nEmail: ' + data.email + '\nBusiness: ' + data.business + '\n\nPain Point:\n' + data.pain);
+        window.location.href = 'mailto:Techtonomyllc@gmail.com?subject=' + subject + '&body=' + body;
+      });
     }
 
     // ── Smooth nav active state ──
